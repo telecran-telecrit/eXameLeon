@@ -1,6 +1,6 @@
 {
   "author": "Ben Newman <bn@cs.stanford.edu>",
-  "name": "regenerator",
+  "name": "regenerator-6to5",
   "description": "Source transformer enabling ECMAScript 6 generator functions (yield) in JavaScript-of-today (ES5)",
   "keywords": [
     "generator",
@@ -28,12 +28,10 @@
     "test": "node test/run.js"
   },
   "dependencies": {
+    "ast-types": "~0.6.1",
     "commoner": "~0.10.0",
-    "esprima-fb": "~10001.1.0-dev-harmony-fb",
-    "recast": "~0.9.14",
     "private": "~0.1.5",
-    "through": "~2.3.6",
-    "defs": "~1.1.0"
+    "through": "~2.3.6"
   },
   "devDependencies": {
     "mocha": "~1.21.4",
