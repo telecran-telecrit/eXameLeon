@@ -1185,12 +1185,16 @@ describe("catch parameter shadowing", function() {
 describe("empty while loops", function() {
   it("should be preserved in generated code", function() {
     function *gen(x) {
+      var foo;
+
       while (x) {
         // empty while loop
+        foo;
       }
 
       do {
         // empty do-while loop
+        foo;
       } while (x);
 
       return gen.toString();
