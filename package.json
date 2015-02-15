@@ -1,6 +1,6 @@
 {
   "author": "Ben Newman <bn@cs.stanford.edu>",
-  "name": "regenerator-6to5",
+  "name": "regenerator-babel",
   "description": "Source transformer enabling ECMAScript 6 generator functions (yield) in JavaScript-of-today (ES5)",
   "keywords": [
     "generator",
