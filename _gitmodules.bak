@@ -1,3 +1,0 @@
-[submodule "vendor/compat-table"]
-	path = vendor/compat-table
-	url = https://github.com/kangax/compat-table
