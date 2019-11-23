@@ -1,0 +1,6 @@
+[submodule "vendor/regenerator"]
+	path = vendor/regenerator
+	url = http://office.dreamsoft.by:58000/level_l/old-babel-regenerator
+[submodule "vendor/compat-table"]
+	path = vendor/compat-table
+	url = https://github.com/kangax/compat-table
