@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for babel/transformation/helpers/replace-supers.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">babel/transformation/helpers/replace-supers.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">98.55% <small>(136 / 138)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">94.85% <small>(92 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(123 / 123)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric">2 statements, 3 branches</span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">babel/transformation/helpers/</a> &#187; replace-supers.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5525</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4382</span>
+<span class="cline-any cline-yes">4382</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4382</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4371</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4343</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4343</span>
+<span class="cline-any cline-yes">4343</span>
+<span class="cline-any cline-yes">4343</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">120</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">112</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">321</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">332</span>
+<span class="cline-any cline-yes">332</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">200</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-yes">179</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4143</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4142</span>
+<span class="cline-any cline-yes">412</span>
+<span class="cline-any cline-yes">412</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">389</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3730</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-yes">3696</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4133</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">112</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">112</span>
+<span class="cline-any cline-yes">112</span>
+<span class="cline-any cline-yes">112</span>
+<span class="cline-any cline-yes">78</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">// istanbul ignore next
+"use strict";
+&nbsp;
+var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : <span class="branch-1 cbranch-skip" title="branch not covered" >{ "default": obj };</span> };
+&nbsp;
+// istanbul ignore next
+&nbsp;
+var _toConsumableArray = function (arr) { <span class="skip-if-branch" title="else path not taken" >E</span>if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i &lt; arr.length; i++) arr2[i] = arr[i]; return arr2; } else { <span class="cstat-skip" title="statement not covered" >return Array.from(arr); </span>} };
+&nbsp;
+// istanbul ignore next
+&nbsp;
+var _classCallCheck = function (instance, Constructor) { <span class="skip-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-skip" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} };
+&nbsp;
+module.exports = ReplaceSupers;
+&nbsp;
+var messages = _interopRequireWildcard(require("../../messages"));
+&nbsp;
+var t = _interopRequireWildcard(require("../../types"));
+&nbsp;
+function isIllegalBareSuper(node, parent) {
+  if (!isSuper(node, parent)) return false;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (t.isMemberExpression(parent, { computed: false })) <span class="cstat-no" title="statement not covered" >return false;</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (t.isCallExpression(parent, { callee: node })) <span class="cstat-no" title="statement not covered" >return false;</span>
+  return true;
+}
+&nbsp;
+function isSuper(node, parent) {
+  return t.isIdentifier(node, { name: "super" }) &amp;&amp; t.isReferenced(node, parent);
+}
+&nbsp;
+var visitor = {
+  enter: function enter(node, parent, scope, state) {
+    var topLevel = state.topLevel;
+    var self = state.self;
+&nbsp;
+    if (t.isFunction(node) &amp;&amp; !t.isArrowFunctionExpression(node)) {
+      // we need to call traverseLevel again so we're context aware
+      self.traverseLevel(node, false);
+      return this.skip();
+    }
+&nbsp;
+    if (t.isProperty(node, { method: true }) || t.isMethodDefinition(node)) {
+      // break on object methods
+      return this.skip();
+    }
+&nbsp;
+    var getThisReference = topLevel ?
+    // top level so `this` is the instance
+    t.thisExpression :
+    // not in the top level so we need to create a reference
+    self.getThisReference.bind(self);
+&nbsp;
+    var callback = self.specHandle;
+    if (self.isLoose) callback = self.looseHandle;
+    return callback.call(self, getThisReference, node, parent);
+  }
+};
+&nbsp;
+var ReplaceSupers = (function () {
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  function ReplaceSupers(opts) {
+    var inClass = arguments[1] === undefined ? false : arguments[1];
+&nbsp;
+    _classCallCheck(this, ReplaceSupers);
+&nbsp;
+    this.topLevelThisReference = opts.topLevelThisReference;
+    this.methodNode = opts.methodNode;
+    this.superRef = opts.superRef;
+    this.isStatic = opts.isStatic;
+    this.hasSuper = false;
+    this.inClass = inClass;
+    this.isLoose = opts.isLoose;
+    this.scope = opts.scope;
+    this.file = opts.file;
+    this.opts = opts;
+  }
+&nbsp;
+  ReplaceSupers.prototype.getObjectRef = function getObjectRef() {
+    return this.opts.objectRef || this.opts.getObjectRef();
+  };
+&nbsp;
+  /**
+   * Sets a super class value of the named property.
+   *
+   * @example
+   *
+   *   _set(Object.getPrototypeOf(CLASS.prototype), "METHOD", "VALUE", this)
+   *
+   */
+&nbsp;
+  ReplaceSupers.prototype.setSuperProperty = function setSuperProperty(property, value, isComputed, thisExpression) {
+    return t.callExpression(this.file.addHelper("set"), [t.callExpression(t.memberExpression(t.identifier("Object"), t.identifier("getPrototypeOf")), [this.isStatic ? this.getObjectRef() : t.memberExpression(this.getObjectRef(), t.identifier("prototype"))]), isComputed ? <span class="branch-0 cbranch-no" title="branch not covered" >property </span>: t.literal(property.name), value, thisExpression]);
+  };
+&nbsp;
+  /**
+   * Gets a node representing the super class value of the named property.
+   *
+   * @example
+   *
+   *   _get(Object.getPrototypeOf(CLASS.prototype), "METHOD", this)
+   *
+   */
+&nbsp;
+  ReplaceSupers.prototype.getSuperProperty = function getSuperProperty(property, isComputed, thisExpression) {
+    return t.callExpression(this.file.addHelper("get"), [t.callExpression(t.memberExpression(t.identifier("Object"), t.identifier("getPrototypeOf")), [this.isStatic ? this.getObjectRef() : t.memberExpression(this.getObjectRef(), t.identifier("prototype"))]), isComputed ? property : t.literal(property.name), thisExpression]);
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.replace = function replace() {
+    this.traverseLevel(this.methodNode.value, true);
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.traverseLevel = function traverseLevel(node, topLevel) {
+    var state = { self: this, topLevel: topLevel };
+    this.scope.traverse(node, visitor, state);
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.getThisReference = function getThisReference() {
+    if (this.topLevelThisReference) {
+      return this.topLevelThisReference;
+    } else {
+      var ref = this.topLevelThisReference = this.scope.generateUidIdentifier("this");
+      this.methodNode.value.body.body.unshift(t.variableDeclaration("var", [t.variableDeclarator(this.topLevelThisReference, t.thisExpression())]));
+      return ref;
+    }
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.getLooseSuperProperty = function getLooseSuperProperty(id, parent) {
+    var methodNode = this.methodNode;
+    var methodName = methodNode.key;
+    var superRef = this.superRef || <span class="branch-1 cbranch-no" title="branch not covered" >t.identifier("Function");</span>
+&nbsp;
+    if (parent.property === id) {
+      return;
+    } else if (t.isCallExpression(parent, { callee: id })) {
+      // super(); -&gt; objectRef.prototype.MethodName.call(this);
+      parent.arguments.unshift(t.thisExpression());
+&nbsp;
+      if (methodName.name === "constructor") {
+        // constructor() { super(); }
+        return t.memberExpression(superRef, t.identifier("call"));
+      } else {
+        id = superRef;
+&nbsp;
+        // foo() { super(); }
+        if (!methodNode["static"]) {
+          id = t.memberExpression(id, t.identifier("prototype"));
+        }
+&nbsp;
+        id = t.memberExpression(id, methodName, methodNode.computed);
+        return t.memberExpression(id, t.identifier("call"));
+      }
+    } else if (t.isMemberExpression(parent) &amp;&amp; !methodNode["static"]) {
+      // super.test -&gt; objectRef.prototype.test
+      return t.memberExpression(superRef, t.identifier("prototype"));
+    } else {
+      return superRef;
+    }
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.looseHandle = function looseHandle(getThisReference, node, parent) {
+    if (t.isIdentifier(node, { name: "super" })) {
+      this.hasSuper = true;
+      return this.getLooseSuperProperty(node, parent);
+    } else if (t.isCallExpression(node)) {
+      var callee = node.callee;
+      if (!t.isMemberExpression(callee)) return;
+      if (callee.object.name !== "super") return;
+&nbsp;
+      // super.test(); -&gt; objectRef.prototype.MethodName.call(this);
+      this.hasSuper = true;
+      t.appendToMemberExpression(callee, t.identifier("call"));
+      node.arguments.unshift(getThisReference());
+    }
+  };
+&nbsp;
+  /**
+   * Description
+   */
+&nbsp;
+  ReplaceSupers.prototype.specHandle = function specHandle(getThisReference, node, parent) {
+    var methodNode = this.methodNode;
+    var property;
+    var computed;
+    var args;
+    var thisReference;
+&nbsp;
+    if (isIllegalBareSuper(node, parent)) {
+      throw this.file.errorWithNode(node, messages.get("classesIllegalBareSuper"));
+    }
+&nbsp;
+    if (t.isCallExpression(node)) {
+      var callee = node.callee;
+      if (isSuper(callee, node)) {
+        // super(); -&gt; _get(Object.getPrototypeOf(objectRef), "MethodName", this).call(this);
+        property = methodNode.key;
+        computed = methodNode.computed;
+        args = node.arguments;
+&nbsp;
+        // bare `super` call is illegal inside non-constructors
+        //  - https://esdiscuss.org/topic/super-call-in-methods
+        //  - https://twitter.com/wycats/status/544553184396836864
+        if (methodNode.key.name !== "constructor" || !this.inClass) {
+          var methodName = methodNode.key.name || <span class="branch-1 cbranch-no" title="branch not covered" >"METHOD_NAME";</span>
+          throw this.file.errorWithNode(node, messages.get("classesIllegalSuperCall", methodName));
+        }
+      } else if (t.isMemberExpression(callee) &amp;&amp; isSuper(callee.object, callee)) {
+        // super.test(); -&gt; _get(Object.getPrototypeOf(objectRef.prototype), "test", this).call(this);
+        property = callee.property;
+        computed = callee.computed;
+        args = node.arguments;
+      }
+    } else if (t.isMemberExpression(node) &amp;&amp; isSuper(node.object, node)) {
+      // super.name; -&gt; _get(Object.getPrototypeOf(objectRef.prototype), "name", this);
+      property = node.property;
+      computed = node.computed;
+    } else if (t.isAssignmentExpression(node) &amp;&amp; isSuper(node.left.object, node.left) &amp;&amp; methodNode.kind === "set") {
+      // super.name = "val"; -&gt; _set(Object.getPrototypeOf(objectRef.prototype), "name", this);
+      this.hasSuper = true;
+      return this.setSuperProperty(node.left.property, node.right, node.left.computed, getThisReference());
+    }
+&nbsp;
+    if (!property) return;
+&nbsp;
+    this.hasSuper = true;
+&nbsp;
+    thisReference = getThisReference();
+    var superProperty = this.getSuperProperty(property, computed, thisReference);
+    if (args) {
+      if (args.length === 1 &amp;&amp; t.isSpreadElement(args[0])) {
+        // super(...arguments);
+        return t.callExpression(t.memberExpression(superProperty, t.identifier("apply")), [thisReference, args[0].argument]);
+      } else {
+        return t.callExpression(t.memberExpression(superProperty, t.identifier("call")), [thisReference].concat(_toConsumableArray(args)));
+      }
+    } else {
+      return superProperty;
+    }
+  };
+&nbsp;
+  return ReplaceSupers;
+})();
+&nbsp;
+module.exports = ReplaceSupers;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 07 2020 13:04:48 GMT+0300 (+03)</div>
+</div>
+
+<script src="../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>
