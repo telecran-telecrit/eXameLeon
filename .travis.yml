@@ -1,0 +1,20 @@
+sudo: false
+language: node_js
+node_js:
+  - "0.12"
+  - "iojs"
+
+branches:
+  except:
+   - experimental
+
+before_script: "npm install -g codeclimate-test-reporter"
+script: "make test-travis"
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/acf1870e9d223c65e8d5
+    on_success: always
+    on_failure: always
+    on_start: false
