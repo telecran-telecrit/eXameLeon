@@ -24,7 +24,7 @@
 </p>-->
 
 <h3>Usual way to build</h3>
-<p>
+```
 npm install ./
 make clean
 make bootstrap
@@ -35,4 +35,4 @@ make test-travis
 make test-cov
 make test-browser
 make
-</p>
+```
