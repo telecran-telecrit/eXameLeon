@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="babel-fullscreen" class="no-js">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Babel · The compiler for writing next generation JavaScript</title>
+  <meta name="description" content="The compiler for writing next generation JavaScript">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="./bootstrap.css">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+  <script src="//telecran-telecrit.github.io/libs/jquery/1/jquery.min.js"></script>
+  <script src="./lodash.js"></script>
+  <script src="./bootstrap.js"></script>
+  <script>$("html").removeClass("no-js").addClass("js");</script>
+</head>
+<body>
+
+<nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navigation" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav navbar-right">
+   
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="babel-repl">
+  <form class="form babel-repl-toolbar">
+    <div class="pull-left">
+      <div class="form-group">
+        <label for="option-experimental">
+          <input id="option-experimental" type="checkbox">
+          Experimental
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-loose-mode">
+          <input id="option-loose-mode" type="checkbox">
+          Loose mode
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="option-evaluate">
+          <input id="option-evaluate" type="checkbox">
+          Evaluate
+        </label>
+      </div>
+    </div>
+
+    <div class="pull-right">
+      <div class="form-group hidden">
+        <label for="examples">Examples:</label>
+        <select id="examples">
+          <optgroup label="ES6 Features">
+            <option>Arrows</option>
+            <option>Classes</option>
+            <option>Enhanced Object Literals</option>
+            <option>Template Strings</option>
+            <option>Destructuring</option>
+            <option>Default + Rest + Spread</option>
+            <option>Let + Const</option>
+            <option>Iterators + For..Of</option>
+            <option>Generators</option>
+            <option>Comprehensions</option>
+            <option>Unicode</option>
+            <option>Modules</option>
+            <option>Module Loaders</option>
+            <option>Map + Set + WeakMap + WeakSet</option>
+            <option>Proxies</option>
+            <option>Symbols</option>
+            <option>Subclassable Built-ins</option>
+            <option>Math + Number + String + Object APIs</option>
+            <option>Binary and Octal Literals</option>
+            <option>Promises</option>
+            <option>Reflect API</option>
+            <option>Tail Calls</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <div class="babel-repl-editor babel-repl-input"><div class="ace_editor"></div></div>
+  <div class="babel-repl-editor babel-repl-output"><div class="ace_editor"></div></div>
+  <div class="babel-repl-reporter babel-repl-errors"></div>
+  <div class="babel-repl-reporter babel-repl-console"></div>
+
+  <script src="./ace/1.1.5/ace.js"></script>
+  <script src="./babel.old.js"></script>
+  <script src="./repl.js?t=2015-05"></script>
+</div>
+
+
+<div class="footer text-center">
+  <strong>Babel</strong> · v5.3.0
+ · Distributed under MIT License
+</div>
+
+
+  </body>
+
+</html>
