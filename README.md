@@ -22,3 +22,17 @@
 <!--<p align="center">
   For documentation and website issues please visit the <a href="https://github.com/babel/babel.github.io">babel.github.io</a> repo.
 </p>-->
+
+<h3>Usual way to build</h3>
+<p>
+npm install ./
+make clean
+make bootstrap
+make test-clean
+make build-core && make build-core-test
+make build
+make test-travis
+make test-cov
+make test-browser
+make
+</p>
