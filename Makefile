@@ -65,7 +65,7 @@ test-browser:
 	node $(BROWSERIFY_CMD) -e test/_browser.js >dist/babel-test.js
 	rm -rf templates.json tests.json
 
-	test -n "`which open`" && open test/browser.html
+	test -n "`which open`" && open test/browser.html || xdg-open test/browser.html
 
 publish:
 	git pull --rebase
