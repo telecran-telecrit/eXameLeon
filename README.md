@@ -24,6 +24,7 @@
 </p>-->
 
 <h3>Usual way to build</h3>
+
 ```
 npm install ./
 make clean
@@ -36,3 +37,4 @@ make test-cov
 make test-browser
 make
 ```
+
