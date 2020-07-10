@@ -212,9 +212,17 @@ if (!self.__WB_pmw) {
             this.clearOutput();
 
             try {
+				var stageLevel = 'stage-'+(this.options.experimental ? 0 : 2);
                 transformed = babel.transform(code, {
-                    stage: this.options.experimental ? 0 : 2,
-                    loose: this.options.loose && "all",
+					//"plugins": ['transform-runtime'],
+					//"presets": [
+					//	'react',
+					//	'es2015',
+					//	stageLevel
+					//],
+					optional: (this.options.experimental ? ['reactCompat'] : []),
+					experimental: !!this.options.experimental,
+                    loose: this.options.loose && 'all',
                     filename: 'repl'
                 });
             } catch (err) {
