@@ -5,7 +5,7 @@
 
 <p style="box-sizing: border-box; margin-top: 0px; color: rgb(36, 41,46);">
   <a href="https://babeljs.io/">
-    <img alt="babel" src="vendor/logo-old.png" width="546">
+    <img alt="babel" src="vendor/logo-exameleon.png" width="546">
   </a>
 </p>
 
