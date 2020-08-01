@@ -4,8 +4,8 @@
 <p style="box-sizing: border-box; margin-top: 0px; color: rgb(36, 41,46);">&epsilon;&Chi;&alpha;&mu;&alpha;&iota;&lambda;&epsilon;&omega;&nu; (eXameLeon) - &epsilon;&rho;&alpha;&nu;&iota;&sigma;&tau;&eta;&sigmaf; &chi;&alpha;&mu;&alpha;&iota;&lambda;έ&omega;&nu;, &kappa;&alpha;&theta;&omega;&sigmaf; &Beta;&alpha;&beta;&epsilon;&lambda; &Beta;&alpha;&beta;&upsilon;&lambda;&omega;&nu; &Iota;&sigma;&tau;&omicron;&rho;&iota;&kappa;&omicron;&sigmaf;</p>
 
 <p style="box-sizing: border-box; margin-top: 0px; color: rgb(36, 41,46);">
-  <a href="https://babeljs.io/">
-    <img alt="babel" src="vendor/logo-exameleon.png" width="546">
+  <a href="https://telecran-telecrit.github.io/eXameLeon/">
+    <img alt="εΧαμαιλεων (eXameLeon)" src="vendor/logo-exameleon.png" width="546">
   </a>
 </p>
 
